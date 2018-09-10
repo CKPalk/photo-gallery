@@ -1,0 +1,41 @@
+.GalleryCell {
+  display: inline-block;
+  padding: 2% 0 0 2%;
+  width: 31%;
+}
+
+.GalleryCell-AspectRatioContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.GalleryCell-AspectRatioContainer:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 54.375%;
+}
+
+.GalleryCell-AspectRatioContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.GalleryCell-Image {
+  height: auto;
+  width: 100%;
+}
+
+.GalleryCell-Caption {
+  z-index: 2;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  color: white;
+  text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+}

@@ -1,0 +1,15 @@
+.PhotoGallery-Heading {
+  padding: 0 2%;
+}
+
+.PhotoGalleryItem-Container {
+  padding: 0 2% 0 0;
+}
+
+.PhotoGalleryItem-NoPhotosPrompt {
+  width: 100%;
+  text-align: center;
+  font-size: larger;
+  display: block;
+  margin: 5% 0;
+}

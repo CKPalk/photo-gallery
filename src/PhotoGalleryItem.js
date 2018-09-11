@@ -20,18 +20,16 @@ export default class PhotoGalleryItem extends Component {
     const maxCaption = 150
     const shortenedCaption = caption.length < maxCaption ? caption : `${caption.slice(0, maxCaption)}...`
 
+    // style={{background: `url(${url}) no-repeat`}}
+
     return (
       <div className="GalleryCell">
-        <div className="GalleryCell-AspectRatioContainer">
-          <div className="GalleryCell-AspectRatioContent">
-            <ImageWithOverlay
-              src={url}
-              alt={caption}
-              className="GalleryCell-Image"
-              overlay={<div className="GalleryCell-Caption">{shortenedCaption}</div>}
-            />
-          </div>
-        </div>
+        <ImageWithOverlay
+          src={url}
+          alt={caption}
+          className="GalleryCell-Image"
+          overlay={<div className="GalleryCell-Caption">{shortenedCaption}</div>}
+        />
       </div>
     )
   }

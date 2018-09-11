@@ -17,25 +17,6 @@
   height: 600px;
 }
 
-/*
-medium: '@media (max-width: 1047px)',
-large: '@media (min-width: 1048px)' */
-
-/* small */
-
-@media (max-width: 639px) {
-  .PhotoGallery-Heading {
-    margin-top: 0;
-    height: 10vh;
-    min-height: 50px;
-    margin-bottom: 0;
-  }
-  .PhotoGallery-ContentContainer {
-    height: 90vh;
-    padding: 0;
-  }
-}
-
 .PhotoGallery-Item {
   width: 100%;
   height: 100%;
@@ -77,26 +58,85 @@ large: '@media (min-width: 1048px)' */
   margin: 5% 0;
 }
 
-.SwapPhoto-enter {
+/* small */
+
+@media (max-width: 639px) {
+  .PhotoGallery-Heading {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .PhotoGallery-ContentContainer {
+    padding: 0;
+    height: auto;
+  }
+  .PhotoGallery-Item {
+    height: auto;
+  }
+  .PhotoGallery-Arrow {
+    position: absolute;
+    color: white;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    top: 0;
+  }
+  .PhotoGallery-Arrow:hover {
+    background-color: transparent;
+  }
+  .PhotoGallery-LeftArrow {
+    left: 0;
+  }
+  .PhotoGallery-RightArrow {
+    right: 0;
+  }
+}
+
+.SwapPhoto-left-enter,
+.SwapPhoto-right-enter {
   opacity: 0.01;
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
-.SwapPhoto-enter.SwapPhoto-enter-active {
+.SwapPhoto-right-enter {
+  transform: translateX(20%);
+}
+
+.SwapPhoto-left-enter {
+  transform: translateX(-20%);
+}
+
+.SwapPhoto-left-enter.SwapPhoto-left-enter-active,
+.SwapPhoto-right-enter.SwapPhoto-right-enter-active {
   opacity: 1;
-  transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in, transform 400ms ease-in;
+  transform: translateX(0%);
 }
 
-.SwapPhoto-leave {
+.SwapPhoto-right-leave,
+.SwapPhoto-left-leave {
+  position: absolute;
+  transform: translateX(0%);
+  top: 0;
+  width: 100%;
+  height: 100%;
   opacity: 1;
+  z-index: -1;
 }
 
-.SwapPhoto-leave.SwapPhoto-leave-active {
+.SwapPhoto-left-leave.SwapPhoto-left-leave-active,
+.SwapPhoto-right-leave.SwapPhoto-right-leave-active {
   opacity: 0.01;
-  transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in, transform 400ms ease-in;
+}
+
+.SwapPhoto-left-leave.SwapPhoto-left-leave-active {
+  transform: translateX(20%);
+}
+
+.SwapPhoto-right-leave.SwapPhoto-right-leave-active {
+  transform: translateX(-20%);
 }
 
 /* // comment */

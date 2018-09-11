@@ -1,5 +1,12 @@
 .ImageOverlay {
   position: absolute;
   bottom: 0;
-  height: 60px;
+  height: 80px;
+}
+
+@media (max-width: 639px) {
+  .ImageOverlay {
+    left: 0 !important;
+    right: 0 !important;
+  }
 }

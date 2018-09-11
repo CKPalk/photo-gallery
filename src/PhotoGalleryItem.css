@@ -1,13 +1,7 @@
 .GalleryCell {
+  position: relative;
   height: 100%;
-}
-
-.GalleryCell-AspectRatioContent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
 }
 
 .GalleryCell-Image {
@@ -34,4 +28,11 @@
   color: white;
   text-shadow: 0 0 3px rgba(0, 0, 0, .5);
   font-size: large;
+}
+
+@media (max-width: 639px) {
+  .GalleryCell-Image {
+    position: initial;
+    transform: none;
+  }
 }

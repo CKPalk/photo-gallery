@@ -6,7 +6,6 @@ import './ImageWithOverlay.css'
 
 export default class ImageWithOverlay extends Component {
   static propTypes = {
-    image: PropTypes.node.isRequired,
     overlay: PropTypes.node,
   }
 
@@ -19,6 +18,10 @@ export default class ImageWithOverlay extends Component {
     window.addEventListener('resize', this.updateDimensions)
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.url !== nextProps.url) this.setState({height: 0, width: 0})
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions)
   }
@@ -26,26 +29,26 @@ export default class ImageWithOverlay extends Component {
   updateDimensions = () => {
     if (this.imageRef) {
       const img = findDOMNode(this.imageRef)
-      this.setState({height: parseInt(img.offsetHeight), width: parseInt(img.offsetWidth)})
+      console.log('updating from updateDimensions', img.height, 'x', img.width)
+      this.setState({height: parseInt(img.height), width: parseInt(img.width)})
     }
   }
 
   onImgLoad = ({target: img}) => {
-    this.setState({height: parseInt(img.offsetHeight), width: parseInt(img.offsetWidth)})
+    console.log('updating from onImgLoad', img.height, 'x', img.width)
+    this.setState({height: parseInt(img.height), width: parseInt(img.width)})
   }
 
   render() {
     const {overlay, ...props} = this.props
     const {height, width} = this.state
-
     return (
       <span>
-        <PrettyLoadImage ref={(ref) => (this.imageRef = ref)} onLoad={this.onImgLoad} {...props} />
+        <PrettyLoadImage ref={(ref) => (this.imageRef = ref)} onLoad={this.onImgLoad} onResize={this.updateDimensions} {...props} />
         {width > 100 && (
           <div
             className="ImageOverlay"
             style={{
-              top: height - 80,
               right: `calc(50% - ${width / 2}px)`,
               left: `calc(50% - ${width / 2}px)`,
             }}

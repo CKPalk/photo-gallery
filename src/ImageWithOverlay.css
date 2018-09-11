@@ -1,6 +1,15 @@
 .ImageOverlay {
   position: absolute;
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.35));
+}
+
+.ImageOverlay-Content {
   height: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 @media (max-width: 639px) {

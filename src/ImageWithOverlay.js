@@ -29,13 +29,11 @@ export default class ImageWithOverlay extends Component {
   updateDimensions = () => {
     if (this.imageRef) {
       const img = findDOMNode(this.imageRef)
-      console.log('updating from updateDimensions', img.height, 'x', img.width)
       this.setState({height: parseInt(img.height), width: parseInt(img.width)})
     }
   }
 
   onImgLoad = ({target: img}) => {
-    console.log('updating from onImgLoad', img.height, 'x', img.width)
     this.setState({height: parseInt(img.height), width: parseInt(img.width)})
   }
 
@@ -49,12 +47,14 @@ export default class ImageWithOverlay extends Component {
           <div
             className="ImageOverlay"
             style={{
-              top: `calc(${height}px - 80px)`,
+              height,
               right: `calc(50% - ${width / 2}px)`,
               left: `calc(50% - ${width / 2}px)`,
             }}
           >
+          <div className="ImageOverlay-Content">
             {overlay}
+          </div>
           </div>
         )}
       </span>

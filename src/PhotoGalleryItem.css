@@ -1,7 +1,8 @@
 .GalleryCell {
-  display: inline-block;
-  padding: 2% 0 0 2%;
-  width: 31%;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: #555;
+  overflow: hidden;
 }
 
 .GalleryCell-AspectRatioContainer {
@@ -27,6 +28,11 @@
 .GalleryCell-Image {
   height: auto;
   width: 100%;
+  /* Center image in container */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .GalleryCell-Caption {

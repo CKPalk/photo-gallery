@@ -6,19 +6,23 @@ const propTypes = {
   photo: PropTypes.shape({
     url: PropTypes.string.isRequired,
     caption: PropTypes.string
-  }).isRequired
+  })
 };
 
-function PhotoGalleryItem({photo: {url, caption}}) {
+function PhotoGalleryItem({placeholder, photo: {url, caption}}) {
   return (
-    <li className="GalleryCell">
+    <div className="GalleryCell">
       <div className="GalleryCell-AspectRatioContainer">
         <div className="GalleryCell-AspectRatioContent">
-          <img src={url} alt={caption} className="GalleryCell-Image" />
+          {placeholder ? (
+            <div className="GalleryCell-Image" />
+          ) : (
+            <img src={url} alt={caption} className="GalleryCell-Image" />
+          )}
           <div className="GalleryCell-Caption">{caption}</div>
         </div>
       </div>
-    </li>
+    </div>
   );
 }
 

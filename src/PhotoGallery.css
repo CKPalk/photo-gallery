@@ -67,10 +67,7 @@
   }
   .PhotoGallery-ContentContainer {
     padding: 0;
-    height: auto;
-  }
-  .PhotoGallery-Item {
-    height: auto;
+    overflow: hidden;
   }
   .PhotoGallery-Arrow {
     position: absolute;
@@ -99,6 +96,7 @@
   z-index: 1;
 }
 
+.SwapPhoto-pre-swipe-appear,
 .SwapPhoto-right-enter {
   transform: translateX(20%);
 }
@@ -107,6 +105,7 @@
   transform: translateX(-20%);
 }
 
+.SwapPhoto-pre-swipe-appear.SwapPhoto-pre-swipe-appear-active,
 .SwapPhoto-left-enter.SwapPhoto-left-enter-active,
 .SwapPhoto-right-enter.SwapPhoto-right-enter-active {
   opacity: 1;
@@ -128,7 +127,7 @@
 .SwapPhoto-left-leave.SwapPhoto-left-leave-active,
 .SwapPhoto-right-leave.SwapPhoto-right-leave-active {
   opacity: 0.01;
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
 }
 
 .SwapPhoto-left-leave.SwapPhoto-left-leave-active {

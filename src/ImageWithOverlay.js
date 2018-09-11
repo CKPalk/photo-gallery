@@ -45,10 +45,11 @@ export default class ImageWithOverlay extends Component {
     return (
       <span>
         <PrettyLoadImage ref={(ref) => (this.imageRef = ref)} onLoad={this.onImgLoad} onResize={this.updateDimensions} {...props} />
-        {width > 100 && (
+        {!!width && (
           <div
             className="ImageOverlay"
             style={{
+              top: `calc(${height}px - 80px)`,
               right: `calc(50% - ${width / 2}px)`,
               left: `calc(50% - ${width / 2}px)`,
             }}

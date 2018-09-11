@@ -14,7 +14,7 @@ class PhotoGallery extends Component {
     super(props)
     this.state = {
       selectedIndex: 0,
-      swapDirection: null,
+      swapDirection: 'pre-swipe',
     }
 
     this.nextPhoto = this.nextPhoto.bind(this)
@@ -64,8 +64,9 @@ class PhotoGallery extends Component {
             <div className="PhotoGallery-Item">
               <ReactCSSTransitionGroup
                 transitionName={`SwapPhoto-${swapDirection}`}
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300}
+                transitionAppearTimeout={400}
+                transitionEnterTimeout={400}
+                transitionLeaveTimeout={400}
               >
                 {focusedPhoto && <PhotoGalleryItem key={focusedPhotoId} photo={focusedPhoto} />}
               </ReactCSSTransitionGroup>

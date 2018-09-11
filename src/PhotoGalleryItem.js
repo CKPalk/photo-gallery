@@ -1,31 +1,31 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
-import "./PhotoGalleryItem.css";
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import PrettyLoadImage from './PrettyLoadImage'
+import './PhotoGalleryItem.css'
 
-const propTypes = {
-  photo: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    caption: PropTypes.string
-  })
-};
+export default class PhotoGalleryItem extends Component {
+  static propTypes = {
+    photo: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      caption: PropTypes.string,
+    }),
+  }
 
-function PhotoGalleryItem({placeholder, photo: {url, caption}}) {
-  return (
-    <div className="GalleryCell">
-      <div className="GalleryCell-AspectRatioContainer">
-        <div className="GalleryCell-AspectRatioContent">
-          {placeholder ? (
-            <div className="GalleryCell-Image" />
-          ) : (
-            <img src={url} alt={caption} className="GalleryCell-Image" />
-          )}
-          <div className="GalleryCell-Caption">{caption}</div>
+  render() {
+    const {
+      photo: {url, caption},
+    } = this.props
+    return (
+      <div className="GalleryCell">
+        <div className="GalleryCell-AspectRatioContainer">
+          <div className="GalleryCell-AspectRatioContent">
+            <div>
+              <PrettyLoadImage src={url} alt={caption} className="GalleryCell-Image" />
+              <div className="GalleryCell-Caption">{caption}</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    )
+  }
 }
-
-PhotoGalleryItem.propTypes = propTypes;
-
-export default PhotoGalleryItem;

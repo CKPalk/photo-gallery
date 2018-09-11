@@ -59,7 +59,7 @@ export default class SwipeRegister extends Component {
 
   handleTouchStart = (touchStartEvent) => {
     touchStartEvent.preventDefault()
-    this.handleMotionStart(touchStartEvent.targetTouches[0].clientX)
+    this.handleStart(touchStartEvent.targetTouches[0].clientX)
   }
 
   handleTouchMove = (touchMoveEvent) => {
@@ -94,7 +94,6 @@ export default class SwipeRegister extends Component {
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}
-        // The following event handlers are for mouse compatibility:
         onMouseDown={this.handleMouseDown}
         onMouseMove={this.handleMouseMove}
         onMouseUp={this.handleMouseUp}

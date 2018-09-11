@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import PrettyLoadImage from './PrettyLoadImage'
+import ImageWithOverlay from './ImageWithOverlay'
 import './PhotoGalleryItem.css'
 
 export default class PhotoGalleryItem extends Component {
@@ -15,14 +15,21 @@ export default class PhotoGalleryItem extends Component {
     const {
       photo: {url, caption},
     } = this.props
+
+    // Long captions will be ellipse ended
+    const maxCaption = 150
+    const shortenedCaption = caption.length < maxCaption ? caption : `${caption.slice(0, maxCaption)}...`
+
     return (
       <div className="GalleryCell">
         <div className="GalleryCell-AspectRatioContainer">
           <div className="GalleryCell-AspectRatioContent">
-            <div>
-              <PrettyLoadImage src={url} alt={caption} className="GalleryCell-Image" />
-              <div className="GalleryCell-Caption">{caption}</div>
-            </div>
+            <ImageWithOverlay
+              src={url}
+              alt={caption}
+              className="GalleryCell-Image"
+              overlay={<div className="GalleryCell-Caption">{shortenedCaption}</div>}
+            />
           </div>
         </div>
       </div>

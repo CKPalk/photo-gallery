@@ -5,7 +5,9 @@ export default class PrettyLoadImage extends Component {
     loaded: false,
   }
 
-  onLoad = () => {
+  onLoad = (e) => {
+    const {onLoad} = this.props
+    if (onLoad) onLoad(e)
     this.setState({loaded: true})
   }
 
@@ -14,7 +16,7 @@ export default class PrettyLoadImage extends Component {
     const {style, ...props} = this.props
     const hiddenStyle = {
       ...style,
-      ...(loaded ? {} : {display: 'none'}),
+      ...(loaded ? {} : {opacity: 0}),
     }
 
     return <img {...props} style={hiddenStyle} onLoad={this.onLoad} />
